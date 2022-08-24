@@ -15,7 +15,7 @@ npx convert-to-oklch ./src/**/*.css
 }
 ```
 
-`oklch()` provides better readability since it uses `lightness`, `chroma`, and `hue` components (clother how people think and work with colors) instead of `red`, `blue`, `green`. In contrast with `hsl()`, OKLCH has no issues with contrast and a11y.
+`oklch()` provides better readability since it uses `lightness`, `chroma`, and `hue` components (closer to how people think and work with colors) instead of `red`, `blue` and especially`#4287f5`. In contrast with `hsl()`, OKLCH has no issues with contrast and a11y.
 
 Don’t forget to add `postcss-preset-env` to PostCSS to have `oklch()` polyfill.
 

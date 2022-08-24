@@ -2,19 +2,22 @@
 
 [![npm version][npm-version-img]][npm] [![npm downloads last month][npm-downloads-img]][npm]
 
-Cli tool that converts **rgb**, **rgba**, **hex** and **hsl** colors to **oklch** in specified css files.
+CLI tool that converts `rgb()`, `rgba()`, hex and `hsl()` colors to [**oklch()**](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch) in specified CSS files.
 
-# Requirements 
-
-- **node version ≥ 16.0.0**
-
-# Usage
-
-Run `npx convert-to-oklch` with path to css files, for example:
-
-```
+```sh
 npx convert-to-oklch ./src/**/*.css
 ```
+
+```diff
+.header {
+- background: rgb(102, 173, 221);
++ background: oklch(72% 0.1 240);
+}
+```
+
+`oklch()` provides better readability since it uses `lightness`, `chroma`, and `hue` components (closer to how people think and work with colors) instead of “magic tokens” like `#4287f5`. In contrast with `hsl()`, OKLCH has no issues with contrast and a11y.
+
+Don’t forget to add `postcss-preset-env` to PostCSS to have `oklch()` polyfill.
 
 # More
 

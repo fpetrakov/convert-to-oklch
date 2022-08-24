@@ -3,18 +3,27 @@
   "version": "1.0.0",
   "description": "",
   "main": "./src/index.js",
-  "bin": "./src/index.js",
+  "bin": {
+    "convert-to-oklch": "./src/index.js"
+  },
   "type": "commonjs",
+  "files": [
+    "src/**/*.js",
+    "!**/**/*.test.js"
+  ],
+  "keywords": [
+    "oklch",
+    "convert",
+    "transform"
+  ],
+  "author": "Fedya Petrakov",
+  "license": "MIT",
   "scripts": {
     "test": "jest"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "colorjs.io": "^0.4.0",
     "commander": "^9.4.0",
-    "culori": "^2.0.3",
     "postcss": "^8.4.16"
   },
   "devDependencies": {

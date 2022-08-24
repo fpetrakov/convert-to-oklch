@@ -17,6 +17,7 @@
     "transform"
   ],
   "author": "Fedya Petrakov",
+  "repository": "fpetrakov/convert-to-oklch",
   "license": "MIT",
   "scripts": {
     "test": "jest"

@@ -1,0 +1,23 @@
+{
+  "name": "convert-to-oklch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/index.js",
+  "bin": "./src/index.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "colorjs.io": "^0.4.0",
+    "commander": "^9.4.0",
+    "culori": "^2.0.3",
+    "postcss": "^8.4.16"
+  },
+  "devDependencies": {
+    "jest": "^28.1.3"
+  }
+}

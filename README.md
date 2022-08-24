@@ -9,12 +9,10 @@ npx convert-to-oklch ./src/**/*.css
 ```
 
 ```diff
-```diff
 .header {
 - background: rgb(102, 173, 221);
 + background: oklch(72% 0.1 240);
 }
-```
 ```
 
 `oklch()` provides better readability since it uses `lightness`, `chroma`, and `hue` components (clother how people think and work with colors) instead of `red`, `blue`, `green`. In contrast with `hsl()`, OKLCH has no issues with contrast and a11y.

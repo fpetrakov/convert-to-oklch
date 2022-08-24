@@ -1,7 +1,5 @@
 # convert-to-oklch
 
-[![npm version][npm-version-img]][npm] [![npm downloads last month][npm-downloads-img]][npm]
-
 CLI tool that converts `rgb()`, `rgba()`, hex and `hsl()` colors to [**oklch()**](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch) in specified CSS files.
 
 ```sh

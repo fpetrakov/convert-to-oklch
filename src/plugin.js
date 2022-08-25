@@ -1,5 +1,5 @@
 const Color = require("colorjs.io").default;
-const colorsRegex = new RegExp(/(^#[0-9a-f]{3,6}$|(hsl|rgba?)\([^)]+\))/gi);
+const colorsRegex = new RegExp(/(^#[0-9a-f]{3,8}$|(hsl|rgba?)\([^)]+\))/gi);
 
 module.exports = () => ({
   postcssPlugin: "postcss-convert-to-oklch",

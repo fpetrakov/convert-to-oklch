@@ -1,16 +1,16 @@
 :root {
   --rgb: rgb(176.85, 158.22, 81.33);
   --rgba: rgba(176.85, 158.22, 81.33, 0.72);
-  --hex: #fff001;
-  --hex-2: #f12;
-  --hex-3: #f129;
-  --hex-4: #fff00190;
-  --hex-5: #FFF001;
-  --hex-6: #F12;
-  --hex-7: #F129;
-  --hex-8: #FFF00190;
+  --hex-6char: #fff001;
+  --hex-6char-upper: #FFF001;
+  --hex-3char: #f12;
+  --hex-3char-upper: #F12;
+  --hex-4char: #f129;
+  --hex-4char-upper: #F129;
+  --hex-8char: #fff00190;
+  --hex-8char-upper: #FFF00190;
   --hsl: hsl(50 80% 40%);
-  --hsl-2: hsl(50deg 80% 40% .2);
+  --hsl-alpha: hsl(50deg 80% 40% 0.2);
 }
 
 a {

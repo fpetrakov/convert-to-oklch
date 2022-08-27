@@ -1,4 +1,4 @@
-#! /usr/bin/env node
+#!/usr/bin/env node
 const { program } = require("commander");
 const postcss = require("postcss");
 const fs = require("fs");

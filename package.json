@@ -1,10 +1,13 @@
 {
   "name": "convert-to-oklch",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "CLI tool that converts rgb(), rgba(), hex and hsl() colors to oklch() in specified CSS files.",
   "main": "./src/index.js",
   "bin": {
     "convert-to-oklch": "./src/index.js"
+  },
+  "engines": {
+    "node": ">=16"
   },
   "type": "commonjs",
   "files": [
@@ -21,7 +24,13 @@
     "hsl"
   ],
   "author": "Fedya Petrakov",
-  "repository": "fpetrakov/convert-to-oklch",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fpetrakov/convert-to-oklch"
+  },
+  "bugs": {
+    "url": "https://github.com/fpetrakov/convert-to-oklch/issues"
+  },
   "license": "MIT",
   "scripts": {
     "test": "jest"

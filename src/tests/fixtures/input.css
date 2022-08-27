@@ -11,6 +11,7 @@
   --hex-8char-upper: #FFF00190;
   --hsl: hsl(50 80% 40%);
   --hsl-alpha: hsl(50deg 80% 40% 0.2);
+  --hsla: hsla(50 80% 40% 0.8);
 }
 
 a {

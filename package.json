@@ -1,6 +1,6 @@
 {
   "name": "convert-to-oklch",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "CLI tool that converts rgb(), rgba(), hex, hsl() and hsla() colors to oklch() in specified CSS files.",
   "main": "./src/index.js",
   "bin": {

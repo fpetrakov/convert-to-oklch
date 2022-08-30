@@ -1,6 +1,6 @@
 {
   "name": "convert-to-oklch",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "CLI tool that converts rgb(), rgba(), hex, hsl() and hsla() colors to oklch() in specified CSS files.",
   "main": "./src/index.js",
   "bin": {
@@ -39,6 +39,7 @@
   "dependencies": {
     "colorjs.io": "^0.4.0",
     "commander": "^9.4.0",
+    "picocolors": "^1.0.0",
     "postcss": "^8.4.16"
   },
   "devDependencies": {

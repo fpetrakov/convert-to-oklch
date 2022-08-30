@@ -3,6 +3,7 @@ const { program } = require("commander");
 const packageVersion = require("../package.json").version;
 const postcss = require("postcss");
 const fs = require("fs");
+const pc = require("picocolors")
 const plugin = require("./plugin");
 
 program
@@ -13,6 +14,11 @@ program
   .version(packageVersion);
 
 program.argument("<path>", "path to css files").action(async (path) => {
+  if (!fs.existsSync(path)) {
+    console.error(pc.bgRed("File doesn't exist"));
+    process.exit(1);
+  }
+
   const css = fs.readFileSync(path, "utf-8");
 
   const result = await postcss([plugin])
@@ -20,9 +26,9 @@ program.argument("<path>", "path to css files").action(async (path) => {
     .toString();
 
   await fs.writeFile(path, result, (err) => {
-    if (err) console.error(err);
+    if (err) console.error(pc.bgRed(err));
 
-    console.log("Done!");
+    console.log(pc.bgGreen("Done!"));
   });
 });
 

@@ -20,7 +20,7 @@ const { args } = program;
 
 const convertColors = async (path) => {
   if (!fs.existsSync(path)) {
-    console.error(pc.bgRed(pc.bgBlack("File doesn't exist")));
+    console.error(pc.bgRed(pc.black("File doesn't exist: " + path)));
     process.exit(1);
   }
 

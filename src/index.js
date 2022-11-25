@@ -7,36 +7,34 @@ const pc = require("picocolors");
 const plugin = require("./plugin");
 
 program
-  .name("convert-to-oklch")
-  .description(
-    "CLI tool that converts rgb(), rgba(), hex, hsl() and hsla() colors to oklch() in specified CSS files.",
-  )
-  .version(packageVersion);
+	.name("convert-to-oklch")
+	.description(
+		"CLI tool that converts rgb(), rgba(), hex, hsl() and hsla() colors to oklch() in specified CSS files.",
+	)
+	.version(packageVersion);
 
 program.argument("<path>", "path to css files");
 program.parse();
 
-const { args } = program;
+const { args: cssFilePaths } = program;
 
 const convertColors = async (path) => {
-  if (!fs.existsSync(path)) {
-    console.error(pc.bgRed(pc.black("File doesn't exist: " + path)));
-    process.exit(1);
-  }
+	if (!fs.existsSync(path)) {
+		console.error(pc.bgRed(pc.black("File doesn't exist: " + path)));
+		process.exit(1);
+	}
 
-  const css = fs.readFileSync(path, "utf-8");
+	const css = fs.readFileSync(path, "utf-8");
 
-  const result = await postcss([plugin])
-    .process(css, { from: path })
-    .toString();
+	const result = await postcss([plugin])
+		.process(css, { from: path })
+		.toString();
 
-  await fs.writeFile(path, result, (err) => {
-    if (err) console.error(pc.bgRed(err));
-
-    console.log(pc.bgGreen(pc.black("Done! " + path)));
-  });
+	await fs.writeFile(path, result, (err) => {
+		if (err) console.error(pc.bgRed(err));
+	});
 };
 
-for (const path of args) {
-  convertColors(path);
-}
+cssFilePaths.forEach(convertColors);
+
+console.log(pc.bgGreen(pc.black("Done!")));

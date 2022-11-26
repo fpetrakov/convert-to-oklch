@@ -1,5 +1,5 @@
 const Color = require("colorjs.io").default;
-const colorsRegex = new RegExp(/(^#[0-9a-f]{3,8}$|(hsla?|rgba?)\([^)]+\))/gi);
+const colorsRegex = new RegExp(/(#[0-9a-f]{3,8}|(hsla?|rgba?)\([^)]+\))/gi);
 const pc = require("picocolors");
 
 module.exports = () => ({
@@ -11,6 +11,7 @@ module.exports = () => ({
 		const colorsToConvert = originalColors.filter(
 			(originalColor) => !originalColor.includes("var(--"),
 		);
+		if (!colorsToConvert.length) return;
 
 		const convertedAndOriginalColors = colorsToConvert.map(
 			(originalColor) => {
@@ -26,10 +27,11 @@ module.exports = () => ({
 				}
 			},
 		);
+		if (!convertedAndOriginalColors.length) return;
 
 		convertedAndOriginalColors.forEach(({ converted, original }) => {
 			try {
-				decl.value = decl.value.replace(original, converted);
+				decl.value = decl.value.replaceAll(original, converted);
 			} catch (e) {
 				console.error(
 					pc.bgRed(

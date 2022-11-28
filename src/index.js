@@ -18,7 +18,11 @@ program.parse();
 
 const { args: cssFilePaths } = program;
 
-const convertColors = async (path) => {
+cssFilePaths.forEach(processCssFile);
+
+console.log(pc.bgGreen(pc.black("Done!")));
+
+async function processCssFile(path) {
 	if (!fs.existsSync(path)) {
 		console.error(pc.bgRed(pc.black("File doesn't exist: " + path)));
 		process.exit(1);
@@ -26,15 +30,15 @@ const convertColors = async (path) => {
 
 	const css = fs.readFileSync(path, "utf-8");
 
-	const result = await postcss([plugin])
+	const convertedCss = await postcss([plugin])
 		.process(css, { from: path })
 		.toString();
 
-	await fs.writeFile(path, result, (err) => {
+	await replaceCssColors(path, convertedCss);
+}
+
+async function replaceCssColors(cssFilePath, convertedCss) {
+	fs.writeFile(cssFilePath, convertedCss, (err) => {
 		if (err) console.error(pc.bgRed(err));
 	});
-};
-
-cssFilePaths.forEach(convertColors);
-
-console.log(pc.bgGreen(pc.black("Done!")));
+}

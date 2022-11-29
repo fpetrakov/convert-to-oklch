@@ -1,6 +1,7 @@
 const Color = require("colorjs.io").default;
-const colorsRegex = new RegExp(/(#[0-9a-f]{3,8}|(hsla?|rgba?)\([^)]+\))/gi);
 const pc = require("picocolors");
+
+const colorsRegex = new RegExp(/(#[0-9a-f]{3,8}|(hsla?|rgba?)\([^)]+\))/gi);
 
 module.exports = () => ({
 	postcssPlugin: "postcss-convert-to-oklch",
@@ -13,38 +14,35 @@ function processDecl(decl) {
 	const originalColors = decl.value.match(colorsRegex);
 	if (!originalColors) return;
 
-	const colorsToConvert = originalColors.filter(
-		(originalColor) => !originalColor.includes("var(--"),
-	);
-	if (!colorsToConvert.length) return;
+	originalColors
+		.filter(doesNotIncludeVar)
+		.map((original) => {
+			try {
+				return { original, converted: getConvertedColor(original) };
+			} catch (e) {
+				logError(
+					`Error during color ${original} conversion: ${e}. It won't be converted.`,
+				);
+			}
+		})
+		.filter(Boolean)
+		.forEach(({ converted, original }) => {
+			try {
+				decl.value = decl.value.replaceAll(original, converted);
+			} catch (e) {
+				logError(
+					`Error during replacing ${original} with ${converted}: ${e}`,
+				);
+			}
+		});
+}
 
-	const convertedAndOriginalColors = colorsToConvert.map((originalColor) => {
-		try {
-			const converted = getConvertedColor(originalColor);
-			return { converted, original: originalColor };
-		} catch (e) {
-			logError(e);
-		}
-	});
-	if (!convertedAndOriginalColors.length) return;
-
-	convertedAndOriginalColors.forEach(({ converted, original }) => {
-		try {
-			decl.value = decl.value.replaceAll(original, converted);
-		} catch (e) {
-			logError(e);
-		}
-	});
+function doesNotIncludeVar(color) {
+	return !color.includes("var(--");
 }
 
 function getConvertedColor(color) {
 	return new Color(color).to("oklch").toString();
-}
-
-function logError(error) {
-	console.error(
-		pc.bgRed(`Error during replacing ${original} with ${converted}: ${e}`),
-	);
 }
 
 module.exports.postcss = true;

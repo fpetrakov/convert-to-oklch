@@ -5,6 +5,7 @@ const postcss = require("postcss");
 const fs = require("fs");
 const pc = require("picocolors");
 const plugin = require("./plugin");
+const { logError } = require("./utils");
 
 program
 	.name("convert-to-oklch")
@@ -18,27 +19,30 @@ program.parse();
 
 const { args: cssFilePaths } = program;
 
-cssFilePaths.forEach(processCssFile);
+for (file of cssFilePaths) {
+	await processCssFile(file);
+}
 
 console.log(pc.bgGreen(pc.black("Done!")));
 
 async function processCssFile(path) {
 	if (!fs.existsSync(path)) {
-		console.error(pc.bgRed(pc.black("File doesn't exist: " + path)));
-		process.exit(1);
+		logError("File doesn't exist: " + path);
+		return;
 	}
 
 	const css = fs.readFileSync(path, "utf-8");
 
-	const convertedCss = await postcss([plugin])
-		.process(css, { from: path })
-		.toString();
-
-	await replaceCssColors(path, convertedCss);
+	const convertedCss = await getConvertedCss(css, path);
+	await replaceCssFiles(path, convertedCss);
 }
 
-async function replaceCssColors(cssFilePath, convertedCss) {
+async function getConvertedCss(css, path) {
+	return await postcss([plugin]).process(css, { from: path }).toString();
+}
+
+async function replaceCssFiles(cssFilePath, convertedCss) {
 	fs.writeFile(cssFilePath, convertedCss, (err) => {
-		if (err) console.error(pc.bgRed(err));
+		if (err) logError(err);
 	});
 }

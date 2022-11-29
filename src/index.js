@@ -19,8 +19,12 @@ program.parse();
 
 const { args: cssFilePaths } = program;
 
-for (file of cssFilePaths) {
-	await processCssFile(file);
+processFiles();
+
+async function processFiles() {
+	for (const file of cssFilePaths) {
+		await processCssFile(file);
+	}
 }
 
 console.log(pc.bgGreen(pc.black("Done!")));

@@ -21,13 +21,13 @@ const { args: cssFilePaths } = program;
 
 processFiles();
 
+console.log(pc.bgGreen(pc.black("Done!")));
+
 async function processFiles() {
 	for (const file of cssFilePaths) {
 		await processCssFile(file);
 	}
 }
-
-console.log(pc.bgGreen(pc.black("Done!")));
 
 async function processCssFile(path) {
 	if (!fs.existsSync(path)) {

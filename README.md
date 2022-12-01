@@ -17,6 +17,18 @@ npx convert-to-oklch ./src/**/*.css
 
 Don’t forget to add `postcss-preset-env` to PostCSS to have `oklch()` polyfill.
 
+# Custom properties
+
+Colors that contain custom properties inside are ignored:
+
+```css
+a {
+  color: rgb(102, 173, 221, var(--opacity));
+}
+```
+
+In this case the color will not be converted.
+
 # More
 
 Read more about color spaces in css:

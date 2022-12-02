@@ -18,7 +18,7 @@ function processDecl(decl) {
 		.filter(doesNotIncludeVar)
 		.map((original) => {
 			try {
-				return { original, converted: getConvertedColor(original) };
+				return { original, converted: getConvertedColor(original, 5) };
 			} catch (e) {
 				logError(
 					`Error during color ${original} conversion: ${e}. It won't be converted.`,
@@ -41,8 +41,8 @@ function doesNotIncludeVar(color) {
 	return !color.includes("var(--");
 }
 
-function getConvertedColor(color) {
-	return new Color(color).to("oklch").toString();
+function getConvertedColor(color, precision) {
+	return new Color(color).to("oklch").toString({precision});
 }
 
 module.exports.postcss = true;

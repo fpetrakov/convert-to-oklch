@@ -3,14 +3,14 @@ const pc = require("picocolors");
 
 const colorsRegex = new RegExp(/(#[0-9a-f]{3,8}|(hsla?|rgba?)\([^)]+\))/gi);
 
-module.exports = () => ({
+module.exports = (precision) => ({
 	postcssPlugin: "postcss-convert-to-oklch",
 	Declaration(decl) {
-		processDecl(decl);
+		processDecl(decl, precision);
 	},
 });
 
-function processDecl(decl) {
+function processDecl(decl, precision = 5) {
 	const originalColors = decl.value.match(colorsRegex);
 	if (!originalColors) return;
 
@@ -18,7 +18,7 @@ function processDecl(decl) {
 		.filter(doesNotIncludeVar)
 		.map((original) => {
 			try {
-				return { original, converted: getConvertedColor(original, 5) };
+				return { original, converted: getConvertedColor(original, precision) };
 			} catch (e) {
 				logError(
 					`Error during color ${original} conversion: ${e}. It won't be converted.`,

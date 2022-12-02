@@ -10,7 +10,7 @@ module.exports = (precision) => ({
 	},
 });
 
-function processDecl(decl, precision = 5) {
+function processDecl(decl, precision) {
 	const originalColors = decl.value.match(colorsRegex);
 	if (!originalColors) return;
 
@@ -18,7 +18,10 @@ function processDecl(decl, precision = 5) {
 		.filter(doesNotIncludeVar)
 		.map((original) => {
 			try {
-				return { original, converted: getConvertedColor(original, precision) };
+				return {
+					original,
+					converted: getConvertedColor(original, precision),
+				};
 			} catch (e) {
 				logError(
 					`Error during color ${original} conversion: ${e}. It won't be converted.`,
@@ -42,7 +45,7 @@ function doesNotIncludeVar(color) {
 }
 
 function getConvertedColor(color, precision) {
-	return new Color(color).to("oklch").toString({precision});
+	return new Color(color).to("oklch").toString({ precision });
 }
 
 module.exports.postcss = true;

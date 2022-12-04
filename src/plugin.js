@@ -1,5 +1,5 @@
 const Color = require("colorjs.io").default;
-const pc = require("picocolors");
+const { logError } = require("./utils");
 
 const colorsRegex = new RegExp(/(#[0-9a-f]{3,8}|(hsla?|rgba?)\([^)]+\))/gi);
 

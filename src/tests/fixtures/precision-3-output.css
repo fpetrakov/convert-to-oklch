@@ -1,0 +1,31 @@
+:root {
+	--rgb: oklch(70% 0.1 96);
+	--rgba: oklch(70% 0.1 96 / 0.72);
+	--hex-6char: oklch(93.7% 0.2 105);
+	--hex-6char-upper: oklch(93.7% 0.2 105);
+	--hex-3char: oklch(63.2% 0.25 27);
+	--hex-3char-upper: oklch(63.2% 0.25 27);
+	--hex-4char: oklch(63.2% 0.25 27 / 0.6);
+	--hex-4char-upper: oklch(63.2% 0.25 27 / 0.6);
+	--hex-8char: oklch(93.7% 0.2 105 / 0.56);
+	--hex-8char-upper: oklch(93.7% 0.2 105 / 0.56);
+	--hsl: oklch(69.8% 0.14 96.1);
+	--hsl-alpha: oklch(69.8% 0.14 96.1);
+	--hsla: oklch(69.8% 0.14 96.1 / 0.8);
+}
+
+a {
+	border: 1px solid oklch(31.6% 0.13 29.2);
+}
+
+h1 {
+	background-color: rgba(100, 0, var(--some-var), 1);
+}
+
+.some {
+	background-image: linear-gradient(
+		to top,
+		oklch(60.7% 0.11 250 / 0.4) 0.06em,
+		transparent 0.06em
+	);
+}

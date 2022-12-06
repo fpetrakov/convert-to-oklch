@@ -17,3 +17,15 @@
 a {
 	border: 1px solid rgb(100 0 0);
 }
+
+h1 {
+	background-color: rgba(100, 0, var(--some-var), 1);
+}
+
+.some {
+	background-image: linear-gradient(
+		to top,
+		rgba(75, 134, 194, 0.4) 0.06em,
+		transparent 0.06em
+	);
+}

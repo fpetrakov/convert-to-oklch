@@ -1,19 +1,19 @@
 :root {
-  --rgb: rgb(176.85, 158.22, 81.33);
-  --rgba: rgba(176.85, 158.22, 81.33, 0.72);
-  --hex-6char: #fff001;
-  --hex-6char-upper: #FFF001;
-  --hex-3char: #f12;
-  --hex-3char-upper: #F12;
-  --hex-4char: #f129;
-  --hex-4char-upper: #F129;
-  --hex-8char: #fff00190;
-  --hex-8char-upper: #FFF00190;
-  --hsl: hsl(50 80% 40%);
-  --hsl-alpha: hsl(50deg 80% 40% 0.2);
-  --hsla: hsla(50 80% 40% 0.8);
+	--rgb: rgb(176.85, 158.22, 81.33);
+	--rgba: rgba(176.85, 158.22, 81.33, 0.72);
+	--hex-6char: #fff001;
+	--hex-6char-upper: #fff001;
+	--hex-3char: #f12;
+	--hex-3char-upper: #f12;
+	--hex-4char: #f129;
+	--hex-4char-upper: #f129;
+	--hex-8char: #fff00190;
+	--hex-8char-upper: #fff00190;
+	--hsl: hsl(50 80% 40%);
+	--hsl-alpha: hsl(50deg 80% 40% 0.2);
+	--hsla: hsla(50 80% 40% 0.8);
 }
 
 a {
-  border: 1px solid rgb(100 0 0);
+	border: 1px solid rgb(100 0 0);
 }

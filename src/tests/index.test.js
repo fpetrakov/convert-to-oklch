@@ -1,8 +1,11 @@
-const postcss = require("postcss");
-const fs = require("fs");
-const path = require("path");
+import postcss from "postcss";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 
-const plugin = require("../plugin");
+import plugin from "../plugin.js";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 it("works with default precision", async () => {
 	const input = readFixture("input.css");

@@ -31,7 +31,7 @@ Colors that contain custom properties inside are ignored:
 
 ```css
 a {
-  color: rgb(102, 173, 221, var(--opacity));
+	color: rgb(102, 173, 221, var(--opacity));
 }
 ```
 

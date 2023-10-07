@@ -1,7 +1,6 @@
 // Sync object
 /** @type {import('@jest/types').Config.InitialOptions} */
-const config = {
-  verbose: true,
+export default {
+	verbose: true,
+	transform: {},
 };
-
-module.exports = config;

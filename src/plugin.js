@@ -1,14 +1,16 @@
-const Color = require("colorjs.io").default;
-const { logError } = require("./utils");
+import Color from "colorjs.io";
+import { logError } from "./utils.js";
 
 const colorsRegex = new RegExp(/(#[0-9a-f]{3,8}|(hsla?|rgba?)\([^)]+\))/gi);
 
-module.exports = (precision) => ({
+export default precision => ({
 	postcssPlugin: "postcss-convert-to-oklch",
 	Declaration(decl) {
 		processDecl(decl, precision);
 	},
 });
+
+export const postcss = true;
 
 function processDecl(decl, precision) {
 	const originalColors = decl.value.match(colorsRegex);
@@ -16,7 +18,7 @@ function processDecl(decl, precision) {
 
 	originalColors
 		.filter(doesNotIncludeVar)
-		.map((original) => {
+		.map(original => {
 			try {
 				return {
 					original,
@@ -47,5 +49,3 @@ function doesNotIncludeVar(color) {
 function getConvertedColor(color, precision) {
 	return new Color(color).to("oklch").toString({ precision });
 }
-
-module.exports.postcss = true;

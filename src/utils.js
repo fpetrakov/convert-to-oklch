@@ -1,9 +1,5 @@
-const pc = require("picocolors");
+import pc from "picocolors";
 
-function logError(errorMessage) {
+export function logError(errorMessage) {
 	console.error(pc.bgRed(errorMessage));
 }
-
-module.exports = {
-	logError,
-};

@@ -47,5 +47,14 @@ function doesNotIncludeVar(color) {
 }
 
 function getConvertedColor(color, precision) {
-	return new Color(color).to("oklch").toString({ precision });
+	const clr = new Color(color).to("oklch");
+
+	if (precision) {
+		return clr.toString({ precision });
+	} else {
+		clr.coords[0] = Number(clr.coords[0]).toFixed(3);
+		clr.coords[1] = Number(clr.coords[1]).toFixed(3);
+		clr.coords[2] = Number(clr.coords[2]).toFixed(1);
+		return clr.toString();
+	}
 }

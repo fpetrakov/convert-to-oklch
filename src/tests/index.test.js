@@ -10,7 +10,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 it("works with default precision", async () => {
 	const input = readFixture("input.css");
 	const output = readFixture("output.css");
-	const result = await getResult(input, 5);
+	const result = await getResult(input);
 	expect(result.css).toEqual(output);
 	expect(result.warnings()).toHaveLength(0);
 });

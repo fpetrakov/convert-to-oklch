@@ -19,7 +19,20 @@ Don’t forget to add `postcss-preset-env` to PostCSS to have `oklch()` polyfill
 
 # Precision of conversion
 
-Conversion is done with [colorjs](https://colorjs.io/) package by [Lea Verou](https://github.com/LeaVerou). You can specify precision of color conversion by using `-p` or `--precision` option. **The default value is 5**. Available values are 1-21 inclusive.
+After conversion, the value of each color component is rounded:
+
+```diff
+- oklch(63.245% 0.2529 26.98 / 0.6)
++ oklch(63.2% 0.253 27 / 0.6)
+
+// l - 1 digit after the decimal point
+// c - 3 digits
+// h - 1 digit
+```
+
+You can also specify precision of color conversion by using `-p` or `--precision` option. Available values are 1-21 inclusive.
+
+Conversion is done with [colorjs](https://colorjs.io/) package by [Lea Verou](https://github.com/LeaVerou).
 
 ```bash
 npx convert-to-oklch ./src/*.css -p 2

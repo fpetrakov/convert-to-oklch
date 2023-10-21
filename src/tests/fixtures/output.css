@@ -1,21 +1,21 @@
 :root {
-	--rgb: oklch(70.001% 0.1 96.001);
-	--rgba: oklch(70.001% 0.1 96.001 / 0.72);
-	--hex-6char: oklch(93.71% 0.1987 105.01);
-	--hex-6char-upper: oklch(93.71% 0.1987 105.01);
-	--hex-3char: oklch(63.245% 0.2529 26.98);
-	--hex-3char-upper: oklch(63.245% 0.2529 26.98);
-	--hex-4char: oklch(63.245% 0.2529 26.98 / 0.6);
-	--hex-4char-upper: oklch(63.245% 0.2529 26.98 / 0.6);
-	--hex-8char: oklch(93.71% 0.1987 105.01 / 0.5647);
-	--hex-8char-upper: oklch(93.71% 0.1987 105.01 / 0.5647);
-	--hsl: oklch(69.793% 0.1394 96.1);
-	--hsl-alpha: oklch(69.793% 0.1394 96.1);
-	--hsla: oklch(69.793% 0.1394 96.1 / 0.8);
+	--rgb: oklch(70% 0.1 96);
+	--rgba: oklch(70% 0.1 96 / 0.72);
+	--hex-6char: oklch(93.7% 0.199 105);
+	--hex-6char-upper: oklch(93.7% 0.199 105);
+	--hex-3char: oklch(63.2% 0.253 27);
+	--hex-3char-upper: oklch(63.2% 0.253 27);
+	--hex-4char: oklch(63.2% 0.253 27 / 0.6);
+	--hex-4char-upper: oklch(63.2% 0.253 27 / 0.6);
+	--hex-8char: oklch(93.7% 0.199 105 / 0.5647);
+	--hex-8char-upper: oklch(93.7% 0.199 105 / 0.5647);
+	--hsl: oklch(69.8% 0.139 96.1);
+	--hsl-alpha: oklch(69.8% 0.139 96.1);
+	--hsla: oklch(69.8% 0.139 96.1 / 0.8);
 }
 
 a {
-	border: 1px solid oklch(31.601% 0.1297 29.234);
+	border: 1px solid oklch(31.6% 0.13 29.2);
 }
 
 h1 {
@@ -25,7 +25,7 @@ h1 {
 .some {
 	background-image: linear-gradient(
 		to top,
-		oklch(60.663% 0.1108 250.48 / 0.4) 0.06em,
+		oklch(60.7% 0.111 250.5 / 0.4) 0.06em,
 		transparent 0.06em
 	);
 }

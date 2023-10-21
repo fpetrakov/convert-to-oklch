@@ -7,7 +7,6 @@ import pc from "picocolors";
 import plugin from "./plugin.js";
 import { logError } from "./utils.js";
 
-
 const program = new Command();
 
 const PRECISION_VALUES = Array.from(Array(21), (_, index) => String(index + 1));
@@ -15,7 +14,6 @@ const PRECISION_VALUES = Array.from(Array(21), (_, index) => String(index + 1));
 const precisionOption = new Option(
 	"-p, --precision <number>",
 	"precision of color conversion",
-	"5",
 ).choices(PRECISION_VALUES);
 
 program

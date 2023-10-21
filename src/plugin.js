@@ -3,7 +3,7 @@ import { logError } from "./utils.js";
 
 const colorsRegex = new RegExp(/(#[0-9a-f]{3,8}|(hsla?|rgba?)\([^)]+\))/gi);
 
-export default precision => ({
+export default (precision) => ({
 	postcssPlugin: "postcss-convert-to-oklch",
 	Declaration(decl) {
 		processDecl(decl, precision);
@@ -18,7 +18,7 @@ function processDecl(decl, precision) {
 
 	originalColors
 		.filter(doesNotIncludeVar)
-		.map(original => {
+		.map((original) => {
 			try {
 				return {
 					original,

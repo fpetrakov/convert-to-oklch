@@ -29,7 +29,7 @@ program
 const { args: cssFilePaths } = program;
 const { precision } = program.opts();
 
-const processCssFile = async path => {
+const processCssFile = async (path) => {
 	if (!fs.existsSync(path)) {
 		logError("File doesn't exist: " + path);
 		return;
@@ -41,7 +41,7 @@ const processCssFile = async path => {
 		.process(css, { from: path })
 		.toString();
 
-	fs.writeFile(path, convertedCss, err => {
+	fs.writeFile(path, convertedCss, (err) => {
 		if (err) {
 			logError(err);
 			fs.writeFileSync(path, css);
@@ -50,7 +50,7 @@ const processCssFile = async path => {
 };
 
 const processFiles = async () => {
-	cssFilePaths.map(file => processCssFile(file));
+	cssFilePaths.map((file) => processCssFile(file));
 	await Promise.allSettled(cssFilePaths);
 	console.log(pc.bgGreen(pc.black("Done!")));
 };

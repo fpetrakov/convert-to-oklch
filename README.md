@@ -9,7 +9,7 @@ npx convert-to-oklch ./src/**/*.css
 ```diff
 .header {
 - background: rgb(102, 173, 221);
-+ background: oklch(72% 0.1 240);
++ background: oklch(72% 0.1 239.8);
 }
 ```
 
@@ -22,12 +22,12 @@ Don’t forget to add `postcss-preset-env` to PostCSS to have `oklch()` polyfill
 After conversion, the value of each color component is rounded:
 
 ```diff
-- oklch(63.245% 0.2529 26.98 / 0.6)
-+ oklch(63.2% 0.253 27 / 0.6)
+- oklch(60.66305848755579% 0.11082513148527705 250.4762110872339 / 0.4)
++ oklch(60.7% 0.11 250 / 0.4)
 
-// l - 1 digit after the decimal point
-// c - 3 digits
-// h - 1 digit
+// l - up to 1 digit after the decimal point
+// c - up to 3 digits after the decimal point
+// h - up to 1 digit after the decimal point
 ```
 
 You can also specify precision of color conversion by using `-p` or `--precision` option. Available values are 1-21 inclusive.

@@ -48,14 +48,13 @@ function doesNotIncludeVar(color) {
 
 function getConvertedColor(color, precision) {
 	const clr = new Color(color).to("oklch");
-	// console.log(clr.coords);
 
-	// if (precision) {
-	// 	return clr.toString({ precision });
-	// } else {
-	// 	clr.coords[0] = Number(clr.coords[0]).toFixed(3);
-	// 	clr.coords[1] = Number(clr.coords[1]).toFixed(3);
-	// 	clr.coords[2] = Number(clr.coords[2]).toFixed(1);
-	return clr.toString({ precision: 21 });
-	// }
+	if (precision) {
+		return clr.toString({ precision });
+	} else {
+		clr.coords[0] = Number(clr.coords[0]).toFixed(3);
+		clr.coords[1] = Number(clr.coords[1]).toFixed(3);
+		clr.coords[2] = Number(clr.coords[2]).toFixed(1);
+		return clr.toString();
+	}
 }

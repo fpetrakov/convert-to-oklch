@@ -19,7 +19,9 @@ Run the tests using `npm test`
 
 We use [Prettier](https://prettier.io/) to format code.
 
-You can format code using:
+We use [Prettier](https://prettier.io/) (with [a Husky and lint-staged precommit](https://prettier.io/docs/en/precommit.html)) to format your code automatically.
 
--   `npm run format`
--   [Prettier editor integration](https://prettier.io/docs/en/editors.html)
+Alternatively, you can:
+
+-   trigger the pretty-printing all the files using `npm run format`
+-   use a [Prettier editor integration](https://prettier.io/docs/en/editors.html)

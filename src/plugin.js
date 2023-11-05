@@ -1,19 +1,11 @@
 import Color from "colorjs.io";
+
 import { logError } from "./utils.js";
 
-const colorsRegex = new RegExp(/(#[0-9a-f]{3,8}|(hsla?|rgba?)\([^)]+\))/gi);
+const COLORS_REGEX = new RegExp(/(#[0-9a-f]{3,8}|(hsla?|rgba?)\([^)]+\))/gi);
 
-export default (precision) => ({
-	postcssPlugin: "postcss-convert-to-oklch",
-	Declaration(decl) {
-		processDecl(decl, precision);
-	},
-});
-
-export const postcss = true;
-
-function processDecl(decl, precision) {
-	const originalColors = decl.value.match(colorsRegex);
+const processDecl = (decl, precision) => {
+	const originalColors = decl.value.match(COLORS_REGEX);
 	if (!originalColors) return;
 
 	originalColors
@@ -40,13 +32,11 @@ function processDecl(decl, precision) {
 				);
 			}
 		});
-}
+};
 
-function doesNotIncludeVar(color) {
-	return !color.includes("var(--");
-}
+const doesNotIncludeVar = (color) => !color.includes("var(--");
 
-function getConvertedColor(color, precision) {
+const getConvertedColor = (color, precision) => {
 	const clr = new Color(color).to("oklch");
 
 	if (precision) {
@@ -57,4 +47,13 @@ function getConvertedColor(color, precision) {
 		clr.coords[2] = Number(clr.coords[2]).toFixed(1);
 		return clr.toString();
 	}
-}
+};
+
+export default (precision) => ({
+	postcssPlugin: "postcss-convert-to-oklch",
+	Declaration(decl) {
+		processDecl(decl, precision);
+	},
+});
+
+export const postcss = true;

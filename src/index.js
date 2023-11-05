@@ -49,10 +49,10 @@ const processCssFile = async (path) => {
 	});
 };
 
-const processFiles = async () => {
-	cssFilePaths.map((file) => processCssFile(file));
+const processFiles = async (cssFilePaths) => {
+	cssFilePaths.map(processCssFile);
 	await Promise.allSettled(cssFilePaths);
 	console.log(pc.bgGreen(pc.black("Done!")));
 };
 
-processFiles();
+processFiles(cssFilePaths);

@@ -1,5 +1,3 @@
 import pc from "picocolors";
 
-export function logError(errorMessage) {
-	console.error(pc.bgRed(errorMessage));
-}
+export const logError = (errorMessage) => console.error(pc.bgRed(errorMessage));

@@ -34,19 +34,23 @@ const processDecl = (decl, precision) => {
 		});
 };
 
-const doesNotIncludeVar = (color) => !color.includes("var(--");
+const doesNotIncludeVar = (str) => !str.includes("var(--");
+
+const roundColorComponentsValues = (color) => [
+	color.coords[0].toFixed(3),
+	color.coords[1].toFixed(3),
+	color.coords[2].toFixed(1),
+];
 
 const getConvertedColor = (color, precision) => {
-	const clr = new Color(color).to("oklch");
+	const oklch = new Color(color).to("oklch");
 
 	if (precision) {
-		return clr.toString({ precision });
-	} else {
-		clr.coords[0] = Number(clr.coords[0]).toFixed(3);
-		clr.coords[1] = Number(clr.coords[1]).toFixed(3);
-		clr.coords[2] = Number(clr.coords[2]).toFixed(1);
-		return clr.toString();
+		return oklch.toString({ precision });
 	}
+
+	oklch.coords = roundColorComponentsValues(oklch);
+	return oklch.toString();
 };
 
 export default (precision) => ({

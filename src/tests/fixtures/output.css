@@ -7,9 +7,10 @@
 	--hex-3char-upper: oklch(63.2% 0.253 27);
 	--hex-4char: oklch(63.2% 0.253 27 / 0.6);
 	--hex-4char-upper: oklch(63.2% 0.253 27 / 0.6);
-	--hex-8char: oklch(93.7% 0.199 105 / 0.5647);
-	--hex-8char-upper: oklch(93.7% 0.199 105 / 0.5647);
+	--hex-8char: oklch(93.7% 0.199 105 / 0.56471);
+	--hex-8char-upper: oklch(93.7% 0.199 105 / 0.56471);
 	--hsl: oklch(69.8% 0.139 96.1);
+	--hsl-black: oklch(0% 0 NaN);
 	--hsl-alpha: oklch(69.8% 0.139 96.1);
 	--hsla: oklch(69.8% 0.139 96.1 / 0.8);
 }
